@@ -1,0 +1,62 @@
+<html>
+<head>
+<script src="skulpt.min.js" type="text/javascript"></script>
+<script src="skulpt-stdlib.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<script type="text/javascript">
+function outf(text) {
+   var mypre = document.getElementById("output");
+   mypre.innerHTML = mypre.innerHTML + text;
+}
+
+function builtinRead(x)
+{
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+        throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
+}
+
+function runit() {
+   var prog = document.getElementById("yourcode").value;
+   var mypre = document.getElementById("output");
+   mypre.innerHTML = '';
+   Sk.configure({output:outf,
+           read: builtinRead
+              });
+   try {
+      Sk.importMainWithBody('<stdin>',false,prog);
+   } catch (e) {
+      alert(e);
+   }
+}
+</script>
+<h1>Emulator Python</h1>
+<form>
+<h3>Input/Entrada:</h3>
+<br>
+<textarea edit_id="eta_5" id="input">
+Hello World!
+</textarea>
+<br>
+<h3>Code/Código:</h3>
+<br>
+<textarea edit_id="eta_5" id="yourcode">
+import document
+
+pre = document.getElementById('input').value
+
+print(pre)
+</textarea>
+<br>
+<button onclick="runit()" type="button">Run</button>
+<br>
+<h3>Output/Saída:</h3>
+<br>
+<textarea edit_id="eta_5" id="output">
+</textarea>
+</form>
+</body>
+</html>
