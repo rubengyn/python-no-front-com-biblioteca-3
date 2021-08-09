@@ -10,6 +10,15 @@ Dá alguns erros que não aconteceria no backend
 
 Consegui trocar o JS pelo Python no front em outro programa, atravês da API
 
+---
+o campo Entrada é a entrada de dados
+o campo código é o codigo de programa
+
+vai rodar o código no proprio navegador 
+
+o resultado será mostrada na saida
+
+---
 Rode no navegor
 
 https://py-com-js-2.r_all.repl.co
